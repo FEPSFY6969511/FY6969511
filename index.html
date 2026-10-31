@@ -195,8 +195,7 @@
     // Initial load to display the time on page load
     window.onload = getLastUpdatedTime;
 </script>
-
-   
+ 
 <!-- ////////////////////////////////////////////////////////// -->
 <!-- ////////////////// Word Count Function ////////////////// -->
 <!-- ////////////////////////////////////////////////////////// -->
@@ -207,37 +206,46 @@
 <hr>
 
 <script>
-  // Function to calculate and display word count for a specified section
-  function displayWordCount(sectionId, outputId) {
-    // Get the text content of the specified section
-    const text = document.getElementById(sectionId).textContent;
+  // Function to count words in text
+  function countWords(text) {
+    const trimmedText = text.trim();
 
-    // Split text into words based on spaces and filter out any empty strings
-    const wordArray = text.trim().split(/\s+/);
+    if (trimmedText === "") {
+      return 0;
+    }
 
-    // Count the words
-    const wordCount = wordArray.length;
-
-    // Return the word count for summing purposes
-    return wordCount;
+    return trimmedText.split(/\s+/).length;
   }
 
-  // Function to calculate and display total word count from selected sections
+  // Function to calculate total word count
   function displayTotalWordCount() {
-    // Calculate word count for each section and accumulate the total
-    const introductionCount = displayWordCount("Introduction");
-    const analysisCount = displayWordCount("Analysis");
 
-    // Calculate the sum of all selected sections
-    const totalWordCount = introductionCount + analysisCount;
+    // Find Introduction and References headings
+    const introduction = document.getElementById("introduction");
+    const references = document.getElementById("References");
+
+    // Create a range covering the required sections
+    const range = document.createRange();
+
+    range.setStartAfter(introduction);
+    range.setEndBefore(references);
+
+    // Get all text between the headings
+    const text = range.toString();
+
+    // Calculate total word count
+    const totalWordCount = countWords(text);
 
     // Display the total word count
-    document.getElementById("totalWordCount").innerText = `Total word count: ${totalWordCount}`;
+    document.getElementById("totalWordCount").innerText =
+      `Total word count: ${totalWordCount}`;
   }
 
-  // Run the function for specific sections and display total count when the page loads
-  window.onload = displayTotalWordCount;
+  // Run the function when the page loads
+  window.addEventListener("load", displayTotalWordCount);
 </script>
+  
+
 
 
   </html>
