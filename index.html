@@ -2,7 +2,10 @@
 
 
   <head>
-    <img src="WebBanner2026.png" alt="Banner" width="1200" height="300">
+    <img src="WebBanner2026.png"
+     alt="Engineering Conference Banner"
+     class="responsive-banner">
+
       <h1><b>ENG0018 Computer Laboratory 2026/27</b><h1>
       <h2>Student URN: 6969511</h2> 
     <hr>
@@ -75,6 +78,33 @@ ol a {
 
 ol a:hover {
     color: #123B5D;
+} 
+
+      
+/* Responsive website banner */
+
+responsive-banner {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    height: auto;
+    max-height: 180px;
+    object-fit: contain;
+    margin: 0 auto 20px auto;
+}
+
+/* Tablet screens */
+@media (max-width: 768px) {
+    .responsive-banner {
+        max-height: 130px;
+    }
+}
+
+/* Mobile screens */
+@media (max-width: 480px) {
+    .responsive-banner {
+        max-height: 90px;
+    }
 } 
        </style>
         
