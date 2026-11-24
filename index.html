@@ -420,14 +420,14 @@ ol a:hover {
   function displayTotalWordCount() {
 
     // Find Introduction and References headings
-    const introduction = document.getElementById("Introduction");
-    const references = document.getElementById("References");
+    const Introduction = document.getElementById("Introduction");
+    const References = document.getElementById("References");
 
     // Create a range covering the required sections
     const range = document.createRange();
 
-    range.setStartAfter(introduction);
-    range.setEndBefore(references);
+    range.setStartAfter(Introduction);
+    range.setEndBefore(References);
 
     // Get all text between the headings
     const text = range.toString();
